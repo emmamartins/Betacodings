@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>BETACODINGS - </title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {% call include 'home.inc.header'  %}
+    </head>
+    <body>
+
+        <!-- TO TOP BUTTON -->
+        <a id="to__top"></a>
+        <!-- ENDING TO TOP BUTTON -->
+
+        <!-- NAVIGATION AREA -->        
+        {% call include 'home.inc.menu'  %}
+        <!-- ENDING NAVIGATION AREA -->
+
+        <div class="bd-bottom" id="jumbo__frame">
+            <div class="container">
+                <div class="jumbo_context">
+                    <h1 class="lead">We equip growing companies with outstanding digital products & experiences.</h1>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid bd-bottom" id="about">
+            <div class="container">
+                <div class="summary">
+                    <h1 class="header_lg">Beta Codings</h1>
+                    <p class="header_lg_sub">The leading Software Developement company, proffering world class responsive website design, web development, ecommerce solutions, social media, branding and digital marketing services for any business – anywhere in the World. We’re located in Lagos.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid bd-bottom" id="services__area">
+            <div class="container"> 
+                <div class="row">
+
+                    {% each listservice %}
+                    <div class="col-sm-4">
+                        <div class="server__boxes">
+                            <div class="server__boxes__icon">
+                                <i class="fa fa-check"></i>
+                            
+                            </div>
+                            <div class="server__boxes__context">
+                                <h2>{{it.service_name}}</h2>
+                                <p>{{it.service_content}}</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    {% endeach %}
+                   
+                  
+                </div>
+            </div>
+        </div>
+
+        
+     
+
+        <div class="container-fluid bd-bottom" id="tech__area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 text-center">
+                        <h1 class="header_lg">Our Technologies</h1> 
+                        <p class="header_lg_sub">We use a wide variety of technologies to build our solutions, some of which are below.</p>
+                    </div>
+                </div>
+
+                <div class="row">
+
+                    {% each listCode %}
+                    <div class="col-sm-2">
+                        <div class="tech__lists"><i class=" devicon-{{it.lang_lable}}-plain colored" title="{{it.lang_lable}}"></i></div>
+                    </div>
+
+                    {% endeach %}
+                    
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid" id="testimonia">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 text-center">
+                        <h1 class="header_lg">What people say</h1> 
+                        <p class="header_lg_sub">Listen to what our client says about us</p>
+                    </div>
+                </div>
+                <div class="row clearfix">
+                    <div class="testy__items">
+
+                        {% each listTestimony %}
+                        <div class="col-sm-4">
+                            <div class="testy__panel">
+                                <div class="testy__header">
+                                    <img src="assets/img/img6.jpg" alt=""/>
+                                    <h3>{% if it.prefix != 'NULL' %} {{it.prefix}} . {% endif %} {{it.fname}} {{it.lname}}</h3>
+                                </div>
+                                <div class="testy__body">
+                                    <p>{{it.message}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        {% endeach %}
+                        
+                    </div>
+                </div>
+            </div>
+        </div>	
+
+        <div class="container-fluid" id="blog__area">  
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 text-center">
+                        <h1 class="header_lg">Our Blog</h1> 
+                        <p class="header_lg_sub"> Learn more about new technology and how to use them</p>
+                    </div>
+                </div>
+                <div class="row">
+
+                    {% each listblog %}
+                    <div class="col-sm-4 mb-3">
+                        <div class="card featured__blog">
+                            <img class="card-img-top" src="assets/img/web-design-nigeria-2-e1482857749578.jpg" alt="">
+                            <div class="card-body">                                    
+                                <div class="news-heading">
+                                   
+                                    <a href="{% call url '/read/{{it.blog_para}}' %}">{{it.blog_title}}</a>
+                                </div>
+                                <div class="news-tags">Posted by {% call Admin 'id' id='{{it.admin_id}}' column='admin_fullname' %} | {% call now 'create' string='{{it.blog_createddate}}' oldformat="..oldformat", newformat="..newformat" %}</div>
+                                <p class="card-text">{% call readmore text='{{it.blog_content}}' trim=True length=180 link="..url/read/{{it.blog_para}}" %}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    {% endeach %}
+                    
+                </div>
+            </div>
+        </div>
+
+       
+                                   
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+        <!-- ENDING GET_IN_TOUCH -->
+
+        {% call extend 'home.inc.footer'  %}
+
+        {% call extend 'home.inc.js'  %}    
+       
+        <script type="text/javascript">
+            /* * SMOOTH SCROLLING*/
+            $('a[href*="#"]').on('click', function (e) {
+                e.preventDefault();
+                $('html, body').animate({
+                    scrollTop: $($(this).attr('href')).offset().top
+                }, 1300, 'linear');
+            });
+        </script>
+        <script type="text/javascript">
+            /* * SCROLL TO TOP */
+            var btn = $('#to__top');
+            $(window).scroll(function () {
+                if ($(window).scrollTop() > 300) {
+                    btn.addClass('show');
+                } else {
+                    btn.removeClass('show');
+                }
+            });
+            btn.on('click', function (e) {
+                e.preventDefault();
+                $('html, body').animate({scrollTop: 0}, '300');
+            });
+        </script>
+        <script type="text/javascript">
+            /* * NAVIGATION ACTIVE CLASS */
+            $(".topNavig li").on("click", function (e) {
+                $(".topNavig li").removeClass("active");
+                $(this).addClass("active");
+            });
+        </script>
+        
+        <script type="text/javascript">
+            $("body").on("click", "button[id^='mobile-btn']", function (e) {
+                e.preventDefault();
+                var element = $('.menus ul');
+                element.fadeToggle("1000","swing").css({'display':'inherit', 'background-color':'#FFFFFF','border-top':'1px solid #dedede'});
+            });
+        </script>
+
+        
+        
+    </body>
+</html>

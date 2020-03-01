@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{{title}} </title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {% call include 'home.inc.header'  %}    
+    </head>
+    <body>
+
+        
+        {% call extend 'home.inc.menu'  %}
+
+        <div class="container-fluid "  id="get__in__touch">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-sm-6 offset-lg-3 pt-50 ">
+                    <div class="card card-contact">
+                        <form id="contact-form" method="post">
+                            <div class="card-header text-left">
+                                <h4 class="card-title">BECOME A CONTRIBUTOR </h4>
+                                <p>You need more information? Check what other persons are saying about our product. They are very happy with their purchase.</p>
+                            </div>
+                            <div class="card-body">
+                               
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group custom-form-group">
+                                            <label class="col-form-label">FIRST NAME</label>
+                                            <input type="text" name="text" class="form-control" placeholder="Your Fullname:">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group custom-form-group">
+                                            <label class="col-form-label">LAST NAME</label>
+                                            <input type="text" name="text" class="form-control" placeholder="Your Fullname:">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group custom-form-group">
+                                            <label class="col-form-label">COUNTRY</label>
+                                            <input type="text" name="text" class="form-control" placeholder="Your Fullname:">
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-sm-6">
+                                        <div class="form-group custom-form-group">
+                                            <label class="col-form-label">CONTRIBUTE AS ?:</label>
+                                            <input type="text" name="text" class="form-control" placeholder="Your Fullname:">
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                        <div class="form-group custom-form-group">
+                                            <label class="col-form-label">E-MAIL</label>
+                                            <input type="email" name="email" class="form-control" placeholder="Your E-mail:">
+                                        </div>
+                                    
+
+                                <div class="form-group custom-form-group">
+                                    <label for="" class="col-form-label">MESSAGE</label>
+                                    <textarea name="message" class="form-control" id="" rows="3" placeholder="Your Message:"></textarea>
+
+                                </div>
+                            </div>
+                            <div class="card-footer clearfix">
+                                <div class="form-check pull-left">
+                                    <label class="form-check-label">
+                                        <input class="form-check-input" type="checkbox" value=""> I'm not a robot
+                                        <span class="form-check-sign">
+                                            <span class="check"></span>
+
+
+                                        </span>
+                                    </label>
+                                </div>
+                                <button type="submit" class="btn btn-brown pull-right">Send Message</button>
+                            </div>
+                        </form>
+                    </div>
+  </div>
+  </div>
+  </div>
+  </div>
+
+        
+  {% call extend 'home.inc.footer'  %}
+        
+
+        <script src="assets/js/jquery-2.1.4.min.js" type="text/javascript"></script>
+        <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            /* * SMOOTH SCROLLING*/
+            $('a[href*="#"]').on('click', function (e) {
+                e.preventDefault();
+                $('html, body').animate({
+                    scrollTop: $($(this).attr('href')).offset().top
+                }, 1300, 'linear');
+            });
+        </script>
+        <script type="text/javascript">
+            /* * SCROLL TO TOP */
+            var btn = $('#to__top');
+            $(window).scroll(function () {
+                if ($(window).scrollTop() > 300) {
+                    btn.addClass('show');
+                } else {
+                    btn.removeClass('show');
+                }
+            });
+            btn.on('click', function (e) {
+                e.preventDefault();
+                $('html, body').animate({scrollTop: 0}, '300');
+            });
+        </script>
+        <script type="text/javascript">
+            /* * NAVIGATION ACTIVE CLASS */
+            $(".topNavig li").on("click", function (e) {
+                $(".topNavig li").removeClass("active");
+                $(this).addClass("active");
+            });
+        </script>
+    </body>
+</html>

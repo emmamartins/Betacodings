@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{{title}} </title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {% call include 'home.inc.header'  %}    
+    </head>
+    <body>
+
+        
+        {% call extend 'home.inc.menu'  %}
+
+
+        {% call extend 'home.inc.footer'  %}
+
+
+        
+
+        <script src="assets/js/jquery-2.1.4.min.js" type="text/javascript"></script>
+        <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            /* * SMOOTH SCROLLING*/
+            $('a[href*="#"]').on('click', function (e) {
+                e.preventDefault();
+                $('html, body').animate({
+                    scrollTop: $($(this).attr('href')).offset().top
+                }, 1300, 'linear');
+            });
+        </script>
+        <script type="text/javascript">
+            /* * SCROLL TO TOP */
+            var btn = $('#to__top');
+            $(window).scroll(function () {
+                if ($(window).scrollTop() > 300) {
+                    btn.addClass('show');
+                } else {
+                    btn.removeClass('show');
+                }
+            });
+            btn.on('click', function (e) {
+                e.preventDefault();
+                $('html, body').animate({scrollTop: 0}, '300');
+            });
+        </script>
+        <script type="text/javascript">
+            /* * NAVIGATION ACTIVE CLASS */
+            $(".topNavig li").on("click", function (e) {
+                $(".topNavig li").removeClass("active");
+                $(this).addClass("active");
+            });
+        </script>
+    </body>
+</html>

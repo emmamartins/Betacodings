@@ -1,0 +1,9 @@
+<IfModule mod_rewrite.c>
+DirectoryIndex home.py
+Options +ExecCGI
+AddHandler cgi-script .py
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ home.py/$1 [L]
+</IfModule>

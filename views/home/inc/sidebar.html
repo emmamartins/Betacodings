@@ -1,0 +1,83 @@
+<div class="row spanel">
+
+  <div class="authorabout" style="display: none;">
+    
+    <h3>About Me</h3>
+    <p><img src="http://betacodings.test/public/assets/img/web-design-nigeria-2-e1482857749578.jpg" alt="">
+    There are many variations of passages of Lo
+        rem Ipsum available, but the majoriity our a
+        have suffered alteration in some form, by in
+        jected humour dolor sit amet.</p>
+</div>
+
+  <div class="text-center subscriberbox">
+    <i class="fa fa-5x fa-envelope "></i>
+    <h4> Subscribe to Newsletter <strong>Sign up </strong>  and receive  latest news. </h4>
+    
+  </div>
+ 
+  
+  <form style="float: left; width: 100%;" method="post" class="" id="subscribeform" name="subscribeform">
+    <div id="msg" style="padding-top: 0.5em;"></div>
+    <div class="form-group custom-form-group">
+      <label class="col-form-label">E-MAIL</label>
+      <input type="email" name="email" id="email" class="form-control" placeholder="Your E-mail:">
+  </div>
+
+          <span class="input-group-btn">
+  <button type="submit" class="btn-block  btn btn-lg btn-orang" name="subscribehome" id="subscribehome">
+               Subscribe </button>
+</span>
+      
+  </form>
+</div>
+
+ 
+ 
+ <div class="row" id="getsellsthem" style="opacity: 0;"></div>
+  <div class="row"
+    style="background: #fff; margin-top: 1px;"
+  >
+    <img
+      src="{% call path path='public/assets' link='True' %}/img/forumads.png"
+      class="img-responsive" style="height: 270px;"
+    />
+
+    <div class="spanel text-center">
+      <h3 >Donation</h3>
+
+      <input
+        class="form-control"
+        readonly=""
+        value="1NfB59ZGhdyBrrU7MVBnDY4y8NwWtN8f3z"
+      />
+
+      <img
+        src="{% call path path='public/assets' link='True' %}/img/btc.jpg"
+        class="img-responsive"
+      />
+
+      <!-- <a href="https://paypal.me/Emmamartins1" target="_blank">  <img src="https://blog.acushlakoncept.com/asset/img/paypal.png" alt="" class="img-responsive"/> </a>
+                     -->
+    </div>
+    <div
+      class="col-lg-12"
+      style="text-align: center; float: left;width: 100%;padding: 0.2em;"
+    >
+      <h3 >Tags</h3>
+      <div class="tags">
+       
+      
+       {% call Blog 'keywords' id='' %}
+       
+      </div>
+    </div>
+
+    {% call Blog 'recent' id='' %}
+      
+
+   
+    
+
+
+</div>

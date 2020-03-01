@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>BETACODINGS - </title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {% call extend 'home.inc.header'  %}
+       
+    </head>
+    <body class="line-numbers">
+        
+        
+       
+        
+       
+
+        <!-- NAVIGATION AREA -->        
+        {% call extend 'home.inc.menu'  %}
+
+        <!-- ENDING NAVIGATION AREA -->
+
+        <div class="inner-hero bg-com pt-100 pb-50">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="inner-text text-center">
+                            <div class="inner-title"> {{title}}</div>
+                            <ul class="inner-link">
+                                <li><a href="{% call url ''%}">Home</a></li>
+                                <li>{{title}}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid" id="blog__container">
+
+            <div class="container">
+
+                <div class="row">
+
+                    <div class="col-sm-7">
+
+                        <div class="single-post-block mb-5">
+
+                            <div class="single-post-img "><img src="{% call path path='public/assets' link='True' %}/img/web-design-nigeria-2-e1482857749578.jpg" /></div>
+
+                            <div class="single-post-body">
+                            <h1 class="header_lg">{{blogtitle}}</h1>
+
+                            <div class="top-card clearfix ">
+                              
+                                <div class="posters">
+                                    <span class="slugs"><i class="devicon-{{blog_lang}}-plain colored"></i></span>
+                                    <span class="tym">{% call now 'ago' string='{{blogcreateddate}}' %} by <span>{% call Admin 'id' id='{{admin_id}}' column='admin_fullname' %}</span></span>
+                                </div>
+
+                                <div class="options">
+                                    <span><i class="fa fa-eye"></i> {% call Views 'count' blog_id="{{blog_id}}" %}</span>
+                                    <span><i class="fa fa-comments"></i> {% call Comments 'count' blog_id="{{blog_id}}" %}</span>
+                                </div>
+
+                            </div>
+                            <div id="shareSo" >
+							</div>
+                            <div class="sinlge-text">
+                                
+
+                               {{blogcontent}}
+                            </div>
+                            </div>
+                        </div>   
+
+                        <hr />
+
+                        <div class="row">
+                            <div class="col-sm-12 text-center">
+                                <h1 class="header_lg">Related Articles</h1> 
+                            </div>
+                        </div>
+                        
+                        <hr />
+                        
+                        <div class="row">
+                            {% each listblog %}
+                    <div class="col-sm-6 mb-5">
+                        <div class="card featured__blog">
+                            <img class="card-img-top" src="../assets/img/web-design-nigeria-2-e1482857749578.jpg" alt="">
+                            <div class="card-body">                                    
+                                <div class="news-heading">
+                                   
+                                    <a href="{% call url '/read/{{it.blog_para}}' %}">{{it.blog_title}}</a>
+                                </div>
+                                <div class="news-tags">Posted by {% call Admin 'id' id='{{it.admin_id}}' column='admin_fullname' %} | {% call now 'create' string='{{it.blog_createddate}}' oldformat="..oldformat", newformat="..newformat" %}</div>
+                                <p class="card-text">{% call readmore text='{{it.blog_content}}' trim=True length=180 link="{{..url}}/read/{{it.blog_para}}" %}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    {% endeach %}
+                    
+                            
+                            
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12 text-center">
+                                <h1 class="header_lg">Comment Articles</h1> 
+                            </div>
+                        </div>
+                        
+                        <hr />
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group custom-form-group">
+                                        <label class="col-form-label">NAME</label>
+                                        <input type="text" name="text" class="form-control" placeholder="Your Fullname:">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group custom-form-group">
+                                        <label class="col-form-label">E-MAIL</label>
+                                        <input type="email" name="email" class="form-control" placeholder="Your E-mail:">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group custom-form-group">
+                                <label for="" class="col-form-label">MESSAGE</label>
+                                <textarea name="message" class="form-control" id="" rows="3" placeholder="Your Message:"></textarea>
+
+                            </div>
+
+                            <button  style="margin-bottom: 0.5em; margin-top: 0.5em;" type="submit" class="btn btn-brown pull-right">Send Message</button>
+                            
+
+                    </div>
+
+                    <div class="col-lg-2">
+                        <div class="sidebar">
+
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        {% call extend 'home.inc.sidebar'  %}
+     
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+        {% call extend 'home.inc.footer'  %}
+
+        {% call extend 'home.inc.js'  %}
+        
+        <script type="text/javascript">
+            /* * SMOOTH SCROLLING*/
+            $('a[href*="#"]').on('click', function (e) {
+                $('html, body').animate({
+                    scrollTop: $($(this).attr('href')).offset().top
+                }, 1300, 'linear');
+            });
+        </script>
+        <script type="text/javascript">
+            /* * SCROLL TO TOP */
+            var btn = $('#to__top');
+            $(window).scroll(function () {
+                if ($(window).scrollTop() > 300) {
+                    btn.addClass('show');
+                } else {
+                    btn.removeClass('show');
+                }
+            });
+            btn.on('click', function (e) {
+                e.preventDefault();
+                $('html, body').animate({scrollTop: 0}, '300');
+            });
+        </script>
+        <script type="text/javascript">
+            /* * NAVIGATION ACTIVE CLASS */
+            $(".topNavig li").on("click", function (e) {
+                $(".topNavig li").removeClass("active");
+                $(this).addClass("active");
+            });
+        </script>
+
+        <script type="text/javascript">
+            $("body").on("click", "button[id^='mobile-btn']", function (e) {
+                e.preventDefault();
+                var element = $('.menus ul');
+                element.fadeToggle("1000", "swing").css({'display': 'inherit', 'background-color': '#FFFFFF', 'border-top': '1px solid #dedede'});
+            });
+        </script>
+
+
+<link rel="stylesheet" href="{% call url '/public/assets/components/jssocials/jssocials-theme-flat.css' %}" type="text/css">
+
+<link rel="stylesheet" href="{% call url '/public/assets/components/jssocials/jssocials.css' %}" type="text/css">
+
+<script src="{% call url '/public/assets/components/jssocials/jssocials.js' %}" type="text/javascript"></script>
+     
+<script type="text/javascript">
+    function slashEscape(contents) {
+return contents
+    .replace(/\\/g, '\\\\')
+    .replace(/"/g, '\\"')
+    .replace(/\n/g, '\\n');
+}
+
+var replacements = {'\\\\': '\\', '\\n': '\n', '\\"': '"'};
+
+function slashUnescape(contents) {
+return contents.replace(/\\(\\|n|")/g, function(replace) {
+    return replacements[replace];
+});
+}
+
+
+        $(document).ready(function () {
+      
+            var url = "{% call url 'read/{{blog_para}}' %}";
+            var text = "";
+            
+            $("#shareSo").jsSocials({
+                url: url,
+                text: text,
+                showCount: "inside",
+                showLabel: true,
+                shares: ["twitter", "facebook", "vkontakte", "stumbleupon", "pinterest", "telegram", "viber", "rss", "messenger",  "whatsapp", "linkedin"]
+
+            });
+        });
+        </script>
+    </body>
+</html>

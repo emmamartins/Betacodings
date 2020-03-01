@@ -1,0 +1,31 @@
+<div class="container-fluid" id="blog__area">  
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                <h1 class="header_lg">Our Blog</h1> 
+                <p class="header_lg_sub"> Learn more about new technology and how to use them</p>
+            </div>
+        </div>
+        <div class="row">
+
+            {% each listblog %}
+            <div class="col-sm-4 mb-3">
+                <div class="card featured__blog">
+                    <img class="card-img-top" src="{% call path path='public/assets/img/web-design-nigeria-2-e1482857749578.jpg' link=True %}" alt="">
+                    <div class="card-body">                                    
+                        <div class="news-heading">
+                           
+                            <a href="{% call url '/read/{{it.blog_para}}' %}">{{it.blog_title}}</a>
+                        </div>
+                        <div class="news-tags">Posted by {% call Admin 'id' id='{{it.admin_id}}' column='admin_fullname' %} | {% call now 'create' string='{{it.blog_createddate}}' oldformat="..oldformat", newformat="..newformat" %}</div>
+                        <p class="card-text">{% call readmore text='{{it.blog_content}}' trim=True length=180 link="..url/read/{{it.blog_para}}" %}
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            {% endeach %}
+            
+        </div>
+    </div>
+</div>

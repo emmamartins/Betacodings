@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>BETACODINGS - </title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {% call extend 'home.inc.header'  %}
+        <link rel="stylesheet" href="{% call url 'public/assets/css/font-mfizz.css' %}">
+       
+    </head>
+    <body class="line-numbers">
+        
+        
+       
+        
+       
+
+        <!-- NAVIGATION AREA -->        
+        {% call extend 'home.inc.menu'  %}
+
+        <!-- ENDING NAVIGATION AREA -->
+
+        <div class="inner-hero bg-com pt-100 pb-50">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="inner-text text-center">
+                            <div class="inner-title"> {{title}}</div>
+                            <ul class="inner-link">
+                                <li><a href="{% call url ''%}">Home</a></li>
+                                { <li><a href="{% call url 'blog/{{code}}'%}">{{code}}</a></li> }
+                                
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="techlists" id="code-lng">
+
+            {% each listCode %}
+            <div class="col-sm-12">
+                    <div class=""><i class=" devicon-{{it.lang_lable}}-plain colored" title="{{it.lang_lable}}"></i></div>
+                </div>
+
+                {% endeach %}
+            </div>
+
+        <div class="container-fluid" id="blog__container">
+
+            <div class="container">
+
+                <div class="row">
+
+                    <div class="col-sm-7">
+
+                        <div class="row">
+                            {% each listBlog %}
+                            <div class="col-sm-12 mb-3">
+                                <div class="card featured__blog">
+                                    <img class="card-img-top" src="{% call path 'exist' newpath='public/uploads/img/180x180_' defaultpath='assets/img/web-design-nigeria-2-e1482857749578.jpg' link=True%}" alt="">
+                                    <div class="card-body">                                    
+                                        <div class="news-heading">
+                                           
+                                            <a href="{% call url '/read/{{it.blog_para}}' %}">{{it.blog_title}}</a>
+                                        </div>
+                                        <div class="news-tags">Posted by {% call Admin 'id' id='{{it.admin_id}}' column='admin_fullname' %} | {% call now 'create' string='{{it.blog_createddate}}' oldformat="..oldformat", newformat="..newformat" %}</div>
+                                        <p class="card-text">{% call readmore text='{{it.blog_content}}' trim=True length=280 link="..url/read/{{it.blog_para}}" %}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+        
+                            {% endeach %}
+                            <p>&nbsp;</p>
+                            <div class="col-lg-6 offset-lg-3">{{paging}}</div>
+                            
+                    </div>
+                </div>
+
+                    <div class="col-lg-2">
+                        <div class="sidebar">
+
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        {% call extend 'home.inc.sidebar'  %}
+     
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+        {% call extend 'home.inc.footer'  %}
+
+        {% call extend 'home.inc.js'  %}
+        <link rel="stylesheet" href="{% call url 'public/assets/components/owl-carousel/owl.carousel.css' %}">
+        <script src="{% call url 'public/assets/components/owl-carousel/owl.carousel.min.js' %}"></script>
+    
+        <script type="text/javascript">
+            /* * SMOOTH SCROLLING*/
+            $('a[href*="#"]').on('click', function (e) {
+                $('html, body').animate({
+                    scrollTop: $($(this).attr('href')).offset().top
+                }, 1300, 'linear');
+            });
+           
+$(document).ready(function () {
+
+
+    $("#code-lng").owlCarousel({
+
+        autoPlay: 15000, //Set AutoPlay to 15 seconds
+
+        items: 12,
+        itemsDesktop: [1199, 6],
+        itemsDesktopSmall: [979, 4]
+
+    });
+
+
+
+
+
+
+});
+
+        </script>
+        <script type="text/javascript">
+            /* * SCROLL TO TOP */
+            var btn = $('#to__top');
+            $(window).scroll(function () {
+                if ($(window).scrollTop() > 300) {
+                    btn.addClass('show');
+                } else {
+                    btn.removeClass('show');
+                }
+            });
+            btn.on('click', function (e) {
+                e.preventDefault();
+                $('html, body').animate({scrollTop: 0}, '300');
+            });
+        </script>
+        <script type="text/javascript">
+            /* * NAVIGATION ACTIVE CLASS */
+            $(".topNavig li").on("click", function (e) {
+                $(".topNavig li").removeClass("active");
+                $(this).addClass("active");
+            });
+        </script>
+
+        <script type="text/javascript">
+            $("body").on("click", "button[id^='mobile-btn']", function (e) {
+                e.preventDefault();
+                var element = $('.menus ul');
+                element.fadeToggle("1000", "swing").css({'display': 'inherit', 'background-color': '#FFFFFF', 'border-top': '1px solid #dedede'});
+            });
+        </script>
+    </script>
+    </body>
+</html>

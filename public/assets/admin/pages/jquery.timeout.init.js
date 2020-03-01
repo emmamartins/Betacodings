@@ -1,0 +1,1 @@
+$.sessionTimeout({message:"Your session will be locked in 30 seconds.",keepAliveUrl:"../pages/pages-starter.html",logoutButton:"Logout",logoutUrl:"../authentication/auth-login.html",redirUrl:"../authentication/auth-lock-screen.html",warnAfter:3e3,redirAfter:3e4,countdownBar:!0});

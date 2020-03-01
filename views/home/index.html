@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="{% call __ default %}"> 
+    <head>
+        <title>BETACODINGS - </title>
+        <meta charset="UTF-8" >
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {% call include 'home.inc.header'  %}
+
+    </head>
+    <body>
+        <div class="bd-bottom" id="jumbo__frame">
+            <div class="container">
+                
+                <div class="col-lg-12">
+                    <div class="jumbo_context">
+                        <h1 class="lead">Resourceful Lead </h1>
+                    </div>
+                    <form>
+                        <div class="inner-form">
+                          <div class="input-field first-wrap">
+                            <div class="input-select">
+                              <select data-trigger="" name="choices-single-defaul">
+                                {% each listCode %}
+                                <option value="{{it.lang_lable}}" placeholder="">{{it.lang_lable}}</option>
+                                {% endeach %}
+                              </select>
+                            </div>
+                          </div>
+                          <div class="input-field second-wrap">
+                            <input id="search" type="text" placeholder="Enter Keywords?" />
+                          </div>
+                          <div class="input-field third-wrap">
+                            <button class="btn-search" id="btn-search" type="button">
+                              <svg class="svg-inline--fa fa-search fa-w-16" aria-hidden="true" data-prefix="fas" data-icon="search" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                <path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"></path>
+                              </svg>
+                            </button>
+                          </div>
+                        </div>
+                      </form>
+                
+                      <div class="" id="code-lng">
+
+                        {% each listCode %}
+                        
+                        <div class="col-sm-12">
+                                <div class="tech__lists">
+                                    <a href="{% call url 'blog/{{it.lang_lable}}'%}"><i class=" devicon-{{it.lang_lable}}-plain colored" title="{{it.lang_lable}}"></i></a></div>
+                            </div>
+        
+                            {% endeach %}
+                        </div>
+                </div>
+                
+                    
+            </div>
+        </div>
+       
+        
+        <!-- NAVIGATION AREA -->        
+        {% call include 'home.inc.menu'  %}
+
+
+        <!-- ENDING NAVIGATION AREA -->
+
+        <div class="container-fluid" id="blog__container">
+            <div class="container">
+                
+                
+                <div class="row">
+
+                    <div class="col-sm-9 ">
+                    <div class="row">
+                        {% each listBlog %}
+                        <div class="col-sm-6 mb-3">
+                            <div class="card featured__blog">
+                                <img class="card-img-top" src="{% call path 'exist' newpath='public/uploads/img/180x180_' defaultpath='assets/img/web-design-nigeria-2-e1482857749578.jpg' link=True%}" alt="">
+                                <div class="card-body">                                    
+                                    <div class="news-heading">
+                                       
+                                        <a href="{% call url '/read/{{it.blog_para}}' %}">{{it.blog_title}}</a>
+                                    </div>
+                                    <div class="news-tags">Posted by {% call Admin 'id' id='{{it.admin_id}}' column='admin_fullname' %} | {% call now 'create' string='{{it.blog_createddate}}' oldformat="..oldformat", newformat="..newformat" %}</div>
+                                    <div class="news-lang">
+                                        <i class=" devicon-{{it.blog_lang}}-plain colored" title="{{it.blog_lang}}"></i>
+              
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+    
+                        {% endeach %}
+                        <p>&nbsp;</p>
+                        <div class="col-lg-6 offset-lg-3">{{paging}}</div>
+                        
+                        <p>&nbsp;</p>
+                    </div>
+
+                    </div>
+                    <div class="col-sm-3 ">
+                        {% call extend 'home.inc.sidebar'%}
+                        </div>
+                    
+
+
+            </div>
+        </div>
+
+
+        </div>
+
+       
+
+        {% call extend 'home.inc.footer'  %}
+       
+        
+        {% call extend 'home.inc.js'  %}
+        <script src="{% call url 'public/assets/extention/choices.js' %}"></script>
+    <script>
+          $(document).ready(function () {
+
+
+            const choices = new Choices('[data-trigger]',
+            {
+                searchEnabled: false,
+                itemSelectText: '',
+            });
+    });
+    </script>
+
+        <link rel="stylesheet" href="{% call url 'public/assets/components/owl-carousel/owl.carousel.css' %}">
+        <script src="{% call url 'public/assets/components/owl-carousel/owl.carousel.min.js' %}"></script>
+    
+       
+        <script type="text/javascript">
+            /* * SMOOTH SCROLLING*/
+            $('a[href*="#"]').on('click', function (e) {
+                $('html, body').animate({
+                    scrollTop: $($(this).attr('href')).offset().top
+                }, 1300, 'linear');
+            });
+        </script>
+        <script type="text/javascript">
+            /* * SCROLL TO TOP */
+            var btn = $('#to__top');
+            $(window).scroll(function () {
+                if ($(window).scrollTop() > 300) {
+                    btn.addClass('show');
+                } else {
+                    btn.removeClass('show');
+                }
+            });
+            btn.on('click', function (e) {
+                e.preventDefault();
+                $('html, body').animate({scrollTop: 0}, '300');
+            });
+        </script>
+        <script type="text/javascript">
+            /* * NAVIGATION ACTIVE CLASS */
+            $(".topNavig li").on("click", function (e) {
+                $(".topNavig li").removeClass("active");
+                $(this).addClass("active");
+            });
+        </script>
+
+        <script type="text/javascript">
+            $("body").on("click", "button[id^='mobile-btn']", function (e) {
+                e.preventDefault();
+                var element = $('.menus ul');
+                element.fadeToggle("1000", "swing").css({'display': 'inherit', 'background-color': '#FFFFFF', 'border-top': '1px solid #dedede'});
+            });
+        </script>
+    </body>
+    <script>
+
+        $(document).ready(function () {
+
+
+            $("#code-lng").owlCarousel({
+
+                autoPlay: 15000, //Set AutoPlay to 15 seconds
+
+                items: 6,
+                itemsDesktop: [1199, 6],
+                itemsDesktopSmall: [979, 4]
+
+            });
+
+
+
+
+
+
+        });
+
+
+        $(document).ready(function () {
+            /*
+            var styco = ["#6181b6", "#9c033a", '#e58740', '#f0db4f', '#a4c439', '#987865', '#d91404']
+            var imageD = document.getElementById("jumbo__frame");
+            var btnseach = document.getElementById("btn-search");
+            var hire__btn = document.getElementById("hire__btn");
+            var subscribehome = document.getElementById("subscribehome");
+            var tag = document.getElementById("tag");
+            
+
+            var i = 0;
+
+            setInterval(function () {
+
+
+                imageD.style.backgroundColor = styco[i]
+                btnseach.style.backgroundColor = styco[i]
+                hire__btn.style.backgroundColor = styco[i]
+                hire__btn.style.borderColor = styco[i]
+                subscribehome.style.backgroundColor = styco[i]
+                subscribehome.style.borderColor = styco[i]
+               
+                tag.style.backgroundColor = styco[i]
+                tag.style.borderColor = styco[i]
+                
+
+                i = i + 1;
+                
+                if (i == styco.length) {
+                    
+                    i = 0;
+                }
+
+            }, 1000);
+            */
+        });
+    </script>
+
+
+<link rel="stylesheet" href="{% call url '/public/assets/components/floating-social-share/jquery.floating-social-share.css' %}" type="text/css">
+
+<script src="{% call url '/public/assets/components/floating-social-share/jquery.floating-social-share.js' %}" type="text/javascript"></script>
+     
+<script type="text/javascript">
+    $("body").floatingSocialShare({
+        buttons: ["facebook", "twitter", "stumbleupon", "linkedin", "pinterest"],
+        text: "share with: ",
+        url: "{% call url '' %}",
+
+    });
+</script> 
+</html>
